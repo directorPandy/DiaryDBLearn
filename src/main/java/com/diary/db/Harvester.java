@@ -22,7 +22,7 @@ public class Harvester {
                 int id = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String speciality = resultSet.getString(3);
-                System.out.println(id + " " + name + " " + speciality);
+                System.out.println("ResultSet " + id + " " + name + " " + speciality);
             }
         } finally {
             if (statement != null) {
@@ -44,7 +44,7 @@ public class Harvester {
                 int id = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String classRoom = resultSet.getString(3);
-                System.out.println(id + " " + name + " " + classRoom);
+                System.out.println("ResultSet " + id + " " + name + " " + classRoom);
             }
         } finally {
             if (statement != null) {
@@ -64,8 +64,8 @@ public class Harvester {
 
                 while (resultSet.next()) {
                     int id = resultSet.getInt(1);
-                    int number = resultSet.getInt(2);
-                    System.out.println(id + " " + number);
+                    String number = resultSet.getString(2);
+                    System.out.println("ResultSet " + id + " " + number);
                 }
             } finally {
                 if (statement != null) {

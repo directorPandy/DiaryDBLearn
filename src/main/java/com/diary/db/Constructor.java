@@ -11,66 +11,23 @@ public class Constructor {
     Connector connector = new Connector();
     Statement statement = null;
     Connection connection;
+    String SQL;
+    String paramName;
 
-    public void tableTeachersCreate() throws SQLException {
-    try{
-        connection = connector.connect();
-        statement = connection.createStatement();
-        String SQL = "CREATE TABLE teachers " +
-                "(id INTEGER not NULL, " +
-                "name VARCHAR (50), " +
-                "spesialitet VARCHAR (50), " +
-                "PRIMARY KEY(id))";
-        statement.executeUpdate(SQL);
-        System.out.println("Table TEACHERS successfully created...");
-    }finally {
-        if(statement!=null){
-            statement.close();
-        }
-        if(connection!=null){
-            connection.close();
+    public void dataInsert(String SQL, String paramName) throws SQLException {
+        try {
+            this.SQL = SQL;
+            this.paramName = paramName;
+            connection = connector.connect();
+            statement = connection.createStatement();
+            statement.executeUpdate(SQL);
+            System.out.println(paramName + " successfully created...");
+        } finally {
+            if (connection != null) {
+                connection.close();
+                System.out.println("Connections closed.");
+            }
         }
     }
 }
 
-    public void tableStudentsCreate() throws SQLException {
-        try{
-            connection = connector.connect();
-            statement = connection.createStatement();
-            String SQL = "CREATE TABLE students " +
-                    "(id INTEGER not NULL, " +
-                    "name VARCHAR (50), " +
-                    "class VARCHAR (50), " +
-                    "PRIMARY KEY(id))";
-            statement.executeUpdate(SQL);
-            System.out.println("Table STUDENT successfully created...");
-        }finally {
-            if(statement!=null){
-                statement.close();
-            }
-            if(connection!=null){
-                connection.close();
-            }
-        }
-    }
-
-    public void tableClassCreate() throws SQLException {
-        try{
-            connection = connector.connect();
-            statement = connection.createStatement();
-            String SQL = "CREATE TABLE class " +
-                    "(id INTEGER not NULL, " +
-                    "number INTEGER, " +
-                    "PRIMARY KEY(id))";
-            statement.executeUpdate(SQL);
-            System.out.println("Table CLASS successfully created...");
-        }finally {
-            if(statement!=null){
-                statement.close();
-            }
-            if(connection!=null){
-                connection.close();
-            }
-        }
-    }
-}
